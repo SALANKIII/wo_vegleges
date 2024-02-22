@@ -4,8 +4,8 @@ class Account{
   String email;
   String pwd;
   String gender;
-  int weight;
-  int height;
+  int weight = 70;
+  int height = 170;
   int role;
   DateTime birthDate;
 
@@ -22,7 +22,6 @@ class Account{
   });
 
   factory Account.fromJson(Map<String, dynamic> json){
-    DateTime date = json['birthDate'] == null? DateTime.now() : DateTime.parse(json['birthDate'] as String);
     return Account(accountID: json['accountID'] as int, userName: json['userName'] as String, email: json['email'] as String, pwd: json['pwd'] as String, gender: ['gender'] as String, weight: json['weight'] as int, height: json['height'] as int, role: json['role'] as int, birthDate: json['birthDate'] as DateTime);
   }
 

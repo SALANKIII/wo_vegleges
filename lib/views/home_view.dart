@@ -24,14 +24,9 @@ class HomeView extends StatelessWidget {
                       onTap: () {
                         Get.to(YourBMIView());
                       },
-                      child: Stack(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundImage: AssetImage('images/profile_picture.jpg'),
-                          ),
-                          
-                        ],
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('images/profile_picture.jpg'),
                       ),
                     ),
                     SizedBox(
@@ -44,7 +39,7 @@ class HomeView extends StatelessWidget {
                           style: TextStyle(color: Colors.white54),
                         ),
                         Text(
-                          "John Smith",
+                          "John Doe",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ],
