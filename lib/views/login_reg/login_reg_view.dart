@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vegleges_wo/components/custom_text_field.dart';
-import 'package:vegleges_wo/controllers/login_reg_view_controller.dart';
+import 'package:vegleges_wo/views/login_reg/login_reg_view_controller.dart';
 
-class FirstView extends StatelessWidget {
-  const FirstView({super.key});
+class LogRegView extends StatelessWidget {
+  const LogRegView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    FirstViewController controller = Get.put(FirstViewController());
+    LogRegViewController controller = Get.put(LogRegViewController());
     return DefaultTabController(
       length: 2,
       child: Builder(builder: (context) {
@@ -16,7 +16,7 @@ class FirstView extends StatelessWidget {
         _.animation!.addListener(() {
           controller.site = (_.indexIsChanging) ? _.index : _.animation!.value.round();
         });
-        return GetBuilder<FirstViewController>(
+        return GetBuilder<LogRegViewController>(
             init: controller,
             builder: (_) {
               return Scaffold(

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vegleges_wo/models/account.dart';
 
 class BMICalculator extends StatelessWidget {
   @override
@@ -22,10 +24,9 @@ class BMICalculatorBody extends StatefulWidget {
 }
 
 class _BMICalculatorBodyState extends State<BMICalculatorBody> {
-  double height = 170;
-  double weight = 70;
+  Account account = Get.arguments["account"] as Account;
+  
   double bmi = 0;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,18 +54,18 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "${height.toInt()}",
+                    "${account.height.toInt()}",
                     style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
                   Slider(
                     inactiveColor: Colors.black45,
                     activeColor: Colors.green,
-                    value: height,
+                    value: account.height.toDouble(),
                     min: 100,
                     max: 220,
                     onChanged: (newValue) {
                       setState(() {
-                        height = newValue;
+                        account.height = newValue.toInt();
                       });
                     },
                   ),
@@ -92,18 +93,18 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "${weight.toInt()}",
+                    "${account.weight.toInt()}",
                     style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
                   Slider(
                     inactiveColor: Colors.black45,
                     activeColor: Colors.green,
-                    value: weight,
+                    value: account.weight.toDouble(),
                     min: 30,
                     max: 150,
                     onChanged: (newValue) {
                       setState(() {
-                        weight = newValue;
+                        account.weight = newValue.toInt();
                       });
                     },
                   ),
@@ -120,11 +121,7 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
             child: Text('Calculate BMI'),
           ),
           SizedBox(height: 20),
-          Text(
-            'Your BMI: ${bmi.toStringAsFixed(2)}',
-            style: TextStyle(fontSize: 25, color: Colors.white),
-          ),
-          SizedBox(height: 20),
+      
           Container(
             decoration: BoxDecoration(
               color: Color.fromARGB(255, 37, 37, 37),
@@ -199,8 +196,8 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
   }
 
   void calculateBMI() {
-    double heightInMeters = height / 100;
-    double bmi = weight / (heightInMeters * heightInMeters);
+    double heightInMeters = account.height / 100;
+    double bmi = account.weight / (heightInMeters * heightInMeters);
     setState(() {
       this.bmi = bmi;
     });

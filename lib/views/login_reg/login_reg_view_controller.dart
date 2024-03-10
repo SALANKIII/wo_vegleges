@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vegleges_wo/backend/backend.dart';
 import 'package:vegleges_wo/models/account.dart';
-import 'package:vegleges_wo/views/home_view.dart';
+import 'package:vegleges_wo/views/home/home_view.dart';
 
-class FirstViewController extends GetxController {
+class LogRegViewController extends GetxController {
   // login
   TextEditingController loginEmailController = TextEditingController(text: "admin@admin.hu");
-  TextEditingController loginPasswordController = TextEditingController(text: "12345aA");
+  TextEditingController loginPasswordController = TextEditingController(text: "123456aA");
 
   // reg
   TextEditingController regEmailController = TextEditingController();
@@ -33,12 +33,19 @@ class FirstViewController extends GetxController {
   }
 
   void reg() async {
+    print("reg");
     if (regPwdController.text == regPwd2Controller.text) {
+      // email, username, gender, weight, height, birthDate, password
       List response = await Backend.POST(route: "/regMobil", body: {
         "email": regEmailController.text,
         "username": regUsernameController.text,
         "password": regPwd2Controller.text,
+        "gender": "0",
+        "weight": "0",
+        "height": "0",
+        "birthDate": DateTime.now().toString().split(' ')[0],
       });
+      print(response);
       List accounts = response.map((e) => Account.fromJson(e)).toList();
       if (accounts.length != 0) {
         // sikeres reg
@@ -60,6 +67,8 @@ class FirstViewController extends GetxController {
       "password": loginPasswordController.text,
     });
     List accounts = response.map((e) => Account.fromJson(e)).toList();
+    print(accounts);
+    print(accounts.length);
     // amikor a length nem 0
     if (accounts.length != 0) {
       // sikeres bejeltkezés
@@ -92,7 +101,9 @@ class FirstViewController extends GetxController {
 
   // automatikusan bejelentkeztet egy felhasználót
   void loginWithEmail(String mail) async {
+    print("logging with mail");
     List response = await Backend.Get(route: '/getUserMobil/$mail');
+    print(response);
     List accounts = response.map((e) => Account.fromJson(e)).toList();
     if (accounts.length != 0) {
       Get.offAll(

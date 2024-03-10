@@ -1,19 +1,17 @@
-class Account{
+class Account {
   int accountID;
-  String userName;
+  String username;
   String email;
-  String pwd;
   String gender;
-  int weight = 70;
-  int height = 170;
+  int weight;
+  int height;
   int role;
   DateTime birthDate;
 
   Account({
     required this.accountID,
-    required this.userName,
+    required this.username,
     required this.email,
-    required this.pwd,
     required this.gender,
     required this.weight,
     required this.height,
@@ -21,21 +19,20 @@ class Account{
     required this.birthDate,
   });
 
-  factory Account.fromJson(Map<String, dynamic> json){
-    return Account(accountID: json['accountID'] as int, userName: json['userName'] as String, email: json['email'] as String, pwd: json['pwd'] as String, gender: ['gender'] as String, weight: json['weight'] as int, height: json['height'] as int, role: json['role'] as int, birthDate: json['birthDate'] as DateTime);
+  factory Account.fromJson(Map<String, dynamic> json) {
+    return Account(accountID: json['accountID'] as int, username: json['username'] as String, email: json['email'] as String, gender: ['gender'].toString(), weight: json['weight'] as int, height: json['height'] as int, role: json['role'] as int, birthDate: DateTime.parse(json['birthDate'].toString()));
   }
 
-  Map<String, dynamic> toJson(){
-    return{
-      "accountID":accountID,
-      "userName":userName,
-      "email":email,
-      "pwd":pwd,
-      "gender":gender,
-      "weight":weight,
-      "height":height,
-      "role":role,
-      "birthDate":birthDate,
+  Map<String, dynamic> toJson() {
+    return {
+      "accountID": accountID,
+      "username": username,
+      "email": email,
+      "gender": gender,
+      "weight": weight,
+      "height": height,
+      "role": role,
+      "birthDate": birthDate,
     };
   }
 }

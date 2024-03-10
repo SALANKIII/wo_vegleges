@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vegleges_wo/controllers/home_view_controller.dart';
-import 'package:vegleges_wo/views/your_bmi_view.dart';
+import 'package:vegleges_wo/views/home/home_view_controller.dart';
 
 class HomeView extends StatelessWidget {
   HomeViewController controller = Get.put(HomeViewController());
@@ -17,13 +16,12 @@ class HomeView extends StatelessWidget {
           body: Padding(
             padding: EdgeInsets.all(20),
             child: Column(
-              children: <Widget>[
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        Get.to(YourBMIView());
-                      },
+                      onTap: controller.goToBmi,
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: AssetImage('images/profile_picture.jpg'),
@@ -33,6 +31,7 @@ class HomeView extends StatelessWidget {
                       width: 20,
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Good to see you",
@@ -59,36 +58,41 @@ class HomeView extends StatelessWidget {
                     CupertinoButton(
                       child: Text(
                         "all >",
-                        style: TextStyle(
-                            color: Color.fromRGBO(65, 221, 41, 1), fontSize: 20),
+                        style: TextStyle(color: Color.fromRGBO(65, 221, 41, 1), fontSize: 20),
                       ),
                       onPressed: () {},
                     ),
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: TabBar(
-                    indicatorColor: Colors.blue,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    tabAlignment: TabAlignment.center,
-                    tabs: [
-                      Tab(
-                        child: Text("Legs",
-                            style: TextStyle(fontSize: 20, color: Colors.white)),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    for (int i = 0; i < 7; i++)
+                      Container(
+                        width: 40,
+                        height: 200,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            for (int j = 0; j < 10; j++)
+                              Container(
+                                width: 6,
+                                height: 2,
+                                color: Colors.white.withOpacity(0.5),
+                              ),
+                          ],
+                        ),
                       ),
-                      Tab(
-                        child: Text("Chest",
-                            style: TextStyle(fontSize: 20, color: Colors.white)),
-                      ),
-                    ],
-                  ),
+                  ],
                 ),
               ],
             ),
           ),
         );
-      }
+      },
     );
   }
 }
