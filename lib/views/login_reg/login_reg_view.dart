@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vegleges_wo/components/custom_text_field.dart';
+import 'package:vegleges_wo/components%20copy/custom_text_field.dart';
 import 'package:vegleges_wo/views/login_reg/login_reg_view_controller.dart';
 
 class LogRegView extends StatelessWidget {

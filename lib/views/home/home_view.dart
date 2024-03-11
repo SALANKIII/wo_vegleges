@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
                           style: TextStyle(color: Colors.white54),
                         ),
                         Text(
-                          "John Doe",
+                          "${controller.account.username}",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ],

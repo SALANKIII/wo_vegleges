@@ -69,8 +69,8 @@ class YourBMIView extends StatelessWidget {
                   ),
                 ),
                 CupertinoButton(
-                          color: Colors.green,
-                            child: Text("Calculate new BMI"),
+                          color: Color.fromARGB(255, 68, 207, 47),
+                            child: Text("Calculate new BMI", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
                             onPressed: () {
                               controller.getToCalculateBMIView();
                             }),
