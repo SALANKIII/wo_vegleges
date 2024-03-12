@@ -54,13 +54,13 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "${account.height.toInt()}",
+                    "${ account.height.toInt()==0?100:account.height.toInt()}",
                     style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
                   Slider(
                     inactiveColor: Colors.black45,
                     activeColor: Colors.green,
-                    value: account.height.toDouble(),
+                    value: account.height.toDouble()==0?100:account.height.toDouble(),
                     min: 100,
                     max: 220,
                     onChanged: (newValue) {
@@ -93,13 +93,13 @@ class _BMICalculatorBodyState extends State<BMICalculatorBody> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "${account.weight.toInt()}",
+                    "${ account.weight.toInt()==0?30:account.weight.toInt()}",
                     style: TextStyle(fontSize: 40, color: Colors.white),
                   ),
                   Slider(
                     inactiveColor: Colors.black45,
                     activeColor: Colors.green,
-                    value: account.weight.toDouble(),
+                    value: account.weight.toDouble()==0?30:account.weight.toDouble(),
                     min: 30,
                     max: 150,
                     onChanged: (newValue) {

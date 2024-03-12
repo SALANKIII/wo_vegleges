@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
+import 'package:vegleges_wo/models/allexercise.dart';
 
-class ActivitiesViewController extends GetxController{
-  
+class AllExerciseViewController extends GetxController{
+  AllExercise allExercise = Get.arguments["allExercise"] as AllExercise;
 }

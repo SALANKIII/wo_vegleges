@@ -60,7 +60,9 @@ class HomeView extends StatelessWidget {
                         "all >",
                         style: TextStyle(color: Color.fromRGBO(65, 221, 41, 1), fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.goToActivities();
+                      },
                     ),
                   ],
                 ),
